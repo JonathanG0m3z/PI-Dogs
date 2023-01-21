@@ -1,0 +1,60 @@
+.nav{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #a7c957;
+    padding-block: 15px;
+}
+
+.nav span{
+    text-decoration: none;
+    color: black;
+    font-size: 24px;
+}
+
+.logo{
+    margin-right: 50px;
+}
+
+.list{
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+.nav label{
+    color: black;
+    align-self: center;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.nav input{
+    display: none;
+}
+
+#toggler,
+.nav .menuButton{
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .menu{
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+    }
+    .list{
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+    .nav .menuButton{
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    .check:checked ~ .menu{
+        max-height: 100%;
+    }
+}
