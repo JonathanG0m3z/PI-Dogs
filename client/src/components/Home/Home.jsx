@@ -33,7 +33,6 @@ export default function Home(props){
     },[page,breeds,allBreeds]);
         return(
             <>
-            {console.log("Renderizando")}
                 <Paginator setPage={setPage}
                 setPageChange={setPageChange}
                 cardsPerPage={cardsPerPage}
