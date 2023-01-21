@@ -1,8 +1,9 @@
-import { ADD_BREEDS } from "./actions";
+import { ADD_BREEDS, FILTER_BREEDS } from "./actions";
 
 
 const initialState = {
     breeds: [],
+    filteredBreeds: [],
 }
 
 const rootReducer = (state=initialState,action)=>{
@@ -11,6 +12,11 @@ const rootReducer = (state=initialState,action)=>{
             return {
                 ...state,
                 breeds: action.payload,
+            };
+        case FILTER_BREEDS:
+            return {
+                ...state,
+                filteredBreeds: action.payload,
             };
     
         default:

@@ -1,14 +1,14 @@
 .inputSearch{
-    background-color: rgba(82, 182, 154, 0.7);
+    background-color: #f3fe88;
     border-radius: 7px;
-    border: 1px solid #1e6091;
+    border: 1px solid black;
     padding: 10px 20px;
-    color: white;
+    color: black;
     font-size: 24px;
-    font-weight: bold;
+    font-family: "Acme";
 }
 .inputSearch:focus{
-    box-shadow: 0 0 35px #4f9;
+    box-shadow: 0 0 5px #fbf7ef;
 }
 .buttonSearch{
     border-radius: 5px;
@@ -22,4 +22,22 @@
 }
 .buttonSearch:hover{
     background-color: #ffff3f;
+}
+.inputSearchFailed{
+    background-color: #f3fe88;
+    border-radius: 7px;
+    border: 1px solid red;
+    padding: 10px 20px;
+    color: black;
+    font-size: 24px;
+    font-family: "Acme";
+}
+.inputSearchFailed:focus{
+    box-shadow: 0 0 8px red;
+}
+.p{
+    color: red;
+    font-size: 20px;
+    margin-top: 2%;
+    margin-bottom: 0%;
 }

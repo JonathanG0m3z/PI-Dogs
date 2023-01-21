@@ -1,8 +1,7 @@
-import { useSelector } from 'react-redux';
 import styles from './Paginator.module.css';
 
-export default function Paginator({setPage, setPageChange, cardsPerPage,page}) {
-  const numPages = useSelector((state)=>Math.ceil(state.breeds.length/cardsPerPage));
+export default function Paginator({setPage, setPageChange, cardsPerPage,page,dataLength}) {
+  const numPages = Math.ceil(dataLength/cardsPerPage);
 
     const onClick = (event)=>{
         setPageChange(true);
