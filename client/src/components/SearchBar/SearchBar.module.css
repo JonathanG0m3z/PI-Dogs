@@ -41,3 +41,14 @@
     margin-top: 2%;
     margin-bottom: 0%;
 }
+.xButton{
+    background-color: red;
+    border-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-family: "Acme";
+    border-radius: 30px;
+    padding: 5px;
+    font-size: 20px;
+    margin-left: 5px;
+}

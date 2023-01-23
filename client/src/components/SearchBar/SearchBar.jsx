@@ -13,12 +13,19 @@ export default function SearchBar(props) {
       }
    };
 
+   const clearFilter = ()=>{
+      setWanted("");
+      setAcceptableInput(true);
+      props.clearFilter();
+   };
+
    return (
       <>
       {!acceptableInput?<p className={styles.p}>Insufficient information</p>:''}
       <div>
          <input value={wanted} onChange={(event)=>setWanted(event.target.value)}
           className={acceptableInput?styles.inputSearch:styles.inputSearchFailed} type='search' />
+          {wanted!=""?<button onClick={clearFilter} className={styles.xButton}>X</button>:''}        
          <button className={styles.buttonSearch} onClick={()=>validation(wanted)}>Buscar</button>
       </div>
       </>

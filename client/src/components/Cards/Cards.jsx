@@ -15,7 +15,7 @@ export default function Cards({breeds}) {
     return(
         <Container>
             {breeds.map((breed)=>{
-            return <Link to={`/detail?id=${breed.id}`}>
+                return <Link to={`/detail?id=${breed.id}`}>
                 <Card race={breed.name} 
                 img={breed.image?.url} 
                 metricWeight={breed.weight.metric}
