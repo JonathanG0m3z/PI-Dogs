@@ -3,7 +3,8 @@ import Cards from '../Cards/Cards';
 import styles from './Home.module.css';
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
-import { addBreeds, filterBreeds, changeOrder, clearFilterRedux, setFiltered } from '../../redux/actions';
+import { addBreeds, filterBreeds, changeOrder, 
+    clearFilterRedux, setFiltered, changeOrderByWeight } from '../../redux/actions';
 import Loading from '../Loading/Loading';
 import Paginator from '../Paginator/Paginator';
 import Nav from '../Nav/Nav';
@@ -53,7 +54,7 @@ export default function Home(props){
 
     const changeOrderBreeds = (type)=>{
         if(type==='ASC' || type==='DES') dispatch(changeOrder(filtered, type));
-        //else 
+        else dispatch(changeOrderByWeight(filtered, type));
         setPageChange(true);
 
     };

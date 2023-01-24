@@ -25,23 +25,31 @@ const rootReducer = (state=initialState,action)=>{
         case CHANGE_ORDER:
             const {filtered, type} = action.payload;
             const actualState = filtered?'filteredBreeds':'breeds';
-            if(state[dictionary[actualState]]!==type) return {
-                ...state,
-                [actualState]: state[actualState].reverse(),
-                [dictionary[actualState]]: type,
-            };
-            else return {...state};
+            state[actualState].sort((a, b)=> {
+                if (a.name > b.name) {
+                  return type==='ASC'?1:-1;
+                }
+                if (a.name < b.name) {
+                  return type==='ASC'?-1:1;
+                }
+                return 0;
+              });
+              return {...state, [dictionary[actualState]]: type,}
 
         case CHANGE_ORDER_BY_WEIGHT:
             const {filteredW, typeW} = action.payload;
             const actualStateW = filteredW?'filteredBreeds':'breeds';
-            if(state[dictionary[actualStateW]]!==typeW) return {
-                ...state,
-                [actualStateW]: state[actualStateW].reverse(),
-                [dictionary[actualStateW]]: typeW,
-            };
-            else return {...state};
-        
+                state[actualStateW].sort((a, b)=> {
+                    if (Number(a.weight.metric.substring(0,2)) > Number(b.weight.metric.substring(0,2))) {
+                      return typeW==='upWeight'?1:-1;
+                    }
+                    if (Number(a.weight.metric.substring(0,2)) < Number(b.weight.metric.substring(0,2))) {
+                      return typeW==='upWeight'?-1:1;
+                    }
+                    return 0;
+                  });
+                  return {...state, [dictionary[actualStateW]]: typeW,}
+
         case CLEAR_FILTER:
             return {
                 ...state,
