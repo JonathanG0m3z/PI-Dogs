@@ -3,7 +3,7 @@ import Cards from '../Cards/Cards';
 import styles from './Home.module.css';
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
-import { addBreeds, filterBreeds } from '../../redux/actions';
+import { addBreeds, filterBreeds, changeOrder, clearFilterRedux, setFiltered } from '../../redux/actions';
 import Loading from '../Loading/Loading';
 import Paginator from '../Paginator/Paginator';
 import Nav from '../Nav/Nav';
@@ -13,10 +13,12 @@ export default function Home(props){
     const [breeds, setBreeds] = useState([]);
     const [page, setPage] = useState(1);
     const [pageChange, setPageChange] = useState(true);
-    const [filtered, setFiltered] = useState(false);
 
     const allBreeds = useSelector((state)=>state.breeds);
     const filteredBreeds = useSelector((state)=>state.filteredBreeds);
+    const orderForAll = useSelector(state=>state.orderAll);
+    const orderForFiltered = useSelector(state=>state.orderFiltered);
+    const filtered = useSelector(state=>state.filtered.isFiltered);
 
     const cardsPerPage = 8;
 
@@ -36,16 +38,23 @@ export default function Home(props){
                     data.filter((breed)=>breed!=undefined)
                 ));
             });
-            setFiltered(true);
+            dispatch(setFiltered(true, wanted));
             setPageChange(true);
             setPage(1);
     };
 
     const clearFilter = ()=>{
-        setFiltered(false);
+        dispatch(setFiltered(false));
         dispatch(filterBreeds([]));
         setPageChange(true);
         setPage(1);
+        dispatch(clearFilterRedux());
+    };
+
+    const changeOrderBreeds = (type)=>{
+        if(type==='ASC' || type==='DES') dispatch(changeOrder(filtered, type));
+        //else 
+        setPageChange(true);
 
     };
 
@@ -64,6 +73,8 @@ export default function Home(props){
             <>  
                 <Nav onSearch={onSearch}
                 clearFilter={clearFilter}
+                changeOrderBreeds={changeOrderBreeds}
+                order={filtered?orderForFiltered:orderForAll}
                 />
 
                 <Paginator setPage={setPage}

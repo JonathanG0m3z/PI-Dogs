@@ -1,3 +1,6 @@
 .loadingGif{
     width: 40%;
 }
+.error{
+    border-radius: 15px;
+}

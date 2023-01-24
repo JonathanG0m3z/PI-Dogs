@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
+import Select from "../Select/Select";
 import styles from './Nav.module.css';
 
-export default function Nav({onSearch, clearFilter}) {
+export default function Nav({onSearch, clearFilter, changeOrderBreeds, order, setOrder}) {
     return(
         <nav className={styles.nav}>
         <Link to="/home">
@@ -14,6 +15,7 @@ export default function Nav({onSearch, clearFilter}) {
         <input className={styles.check} type="checkbox" id="toggler" />
             <div className={styles.menu}>
                 <div className={styles.list}>
+                    <Select changeOrderBreeds={changeOrderBreeds} order={order} />
                     <SearchBar onSearch={onSearch} clearFilter={clearFilter}/>
                     <Link to="/">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
