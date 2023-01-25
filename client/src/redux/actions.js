@@ -4,6 +4,9 @@ export const CHANGE_ORDER = "CHANGE_ORDER";
 export const CHANGE_ORDER_BY_WEIGHT = "CHANGE_ORDER_BY_WEIGHT";
 export const CLEAR_FILTER = "CLEAR_FILTER";
 export const SET_FILTERED = "SET_FILTERED";
+export const ADD_FILTER_BY_TEMPERAMENT = "ADD_FILTER_BY_TEMPERAMENT";
+export const DELETE_ALL = "DELETE_ALL";
+export const FILTER_BY_DATA_SOURCE = "FILTER_BY_DATA_SOURCE";
 
 export const addBreeds = (breeds)=>{
     return {type: ADD_BREEDS, payload: breeds};
@@ -27,4 +30,15 @@ export const clearFilterRedux = ()=>{
 
 export const setFiltered = (isFiltered, wanted="")=>{
     return {type: SET_FILTERED, payload: {isFiltered, wanted}};
+};
+
+export const addFilterByTemperament = (temperamentId)=>{
+    return {type: ADD_FILTER_BY_TEMPERAMENT, payload: temperamentId};
+};
+
+export const deleteAll = ()=>{
+    return {type: DELETE_ALL};
+};
+export const filterByDataSource = (dataSource)=>{
+    return {type: FILTER_BY_DATA_SOURCE, payload: dataSource};
 };

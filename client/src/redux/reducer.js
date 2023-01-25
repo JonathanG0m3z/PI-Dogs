@@ -1,5 +1,8 @@
 import { ADD_BREEDS, FILTER_BREEDS, CHANGE_ORDER, 
-    CHANGE_ORDER_BY_WEIGHT, CLEAR_FILTER, SET_FILTERED } from "./actions";
+    CHANGE_ORDER_BY_WEIGHT, CLEAR_FILTER, SET_FILTERED,
+    ADD_FILTER_BY_TEMPERAMENT, 
+    DELETE_ALL,
+    FILTER_BY_DATA_SOURCE} from "./actions";
 const dictionary = {filteredBreeds: 'orderFiltered', breeds: 'orderAll'};
 
 const initialState = {
@@ -8,6 +11,8 @@ const initialState = {
     orderAll: 'ASC',
     orderFiltered: 'ASC',
     filtered: {isFiltered: false, wanted: ""},
+    filterByTemperament: ['All'],
+    filterByDataSource: ['api','db'],
 }
 
 const rootReducer = (state=initialState,action)=>{
@@ -61,7 +66,40 @@ const rootReducer = (state=initialState,action)=>{
                 ...state,
                 filtered: {...state.filtered, isFiltered, wanted},
             };
-    
+
+        case ADD_FILTER_BY_TEMPERAMENT:
+            if(state.filterByTemperament.some(
+                (temperament)=>action.payload===temperament
+            )){
+                return {...state,
+                    filterByTemperament: state.filterByTemperament.filter(
+                            element=>element!==action.payload
+                        )
+                }
+            }else{
+                state.filterByTemperament.push(action.payload);
+                return {...state};
+            }
+
+        case DELETE_ALL:
+                return{...state,
+                filterByTemperament:  []
+                }
+
+        case FILTER_BY_DATA_SOURCE:
+            if(state.filterByDataSource.some(
+                (dataSource)=>action.payload===dataSource
+            )){
+                return {...state,
+                    filterByDataSource: state.filterByDataSource.filter(
+                            element=>element!==action.payload
+                        )
+                }
+            }else{
+                state.filterByDataSource.push(action.payload);
+                return {...state};
+            }
+                
         default:
             return {...state};
     }

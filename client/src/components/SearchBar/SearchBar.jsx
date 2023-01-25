@@ -20,6 +20,7 @@ export default function SearchBar(props) {
    const clearFilter = ()=>{
       setAcceptableInput(true);
       props.clearFilter();
+      setString("");
    };
 
    return (

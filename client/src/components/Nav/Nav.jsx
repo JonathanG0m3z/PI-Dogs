@@ -1,9 +1,11 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import Select from "../Select/Select";
 import styles from './Nav.module.css';
 
-export default function Nav({onSearch, clearFilter, changeOrderBreeds, order, setOrder}) {
+export default function Nav({onSearch, clearFilter, changeOrderBreeds, order, switchModal}) {
+    const search = useSelector(state=>state.filtered.isFiltered);
     return(
         <nav className={styles.nav}>
         <Link to="/home">
@@ -15,6 +17,7 @@ export default function Nav({onSearch, clearFilter, changeOrderBreeds, order, se
         <input className={styles.check} type="checkbox" id="toggler" />
             <div className={styles.menu}>
                 <div className={styles.list}>
+                    <button disabled={search} className={styles.buttonModal} onClick={switchModal}>Filters</button>
                     <Select changeOrderBreeds={changeOrderBreeds} order={order} />
                     <SearchBar onSearch={onSearch} clearFilter={clearFilter}/>
                     <Link to="/">

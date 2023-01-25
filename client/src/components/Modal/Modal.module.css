@@ -1,0 +1,102 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  
+  .modalMain {
+    position:fixed;
+    background: rgba(251, 247, 239, 0.65);
+    width: 40%;
+    height: 50%;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+  }
+  
+  .displayBlock {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: block;
+  }
+  
+  .displayNone {
+    display: none;
+  }
+  .divClose{
+    display: flex;
+    justify-content: flex-end;
+  }
+  .closeButton{
+    color: white;
+    background-color: red;
+    border-radius: 50%;
+    padding: 5px;
+    border-color: red;
+  }
+  .closeButton:hover{
+    background-color: rgb(248, 39, 39);
+  }
+  .container{
+    display: flex;
+    justify-content: space-between;
+  }
+  .container2{
+    padding: 20px;
+  }
+  /* Estilo para el elemento select */
+.select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Estilo para las opciones del select */
+.selectOption {
+  padding: 10px;
+}
+
+/* Oculta el checkbox */
+.container input[type='checkbox'] {
+  display: none;
+}
+
+/* Estilo para la etiqueta */
+.container label {
+  cursor: pointer;
+  padding: 10px;
+}
+
+/* Estilo para el checkbox cuando está seleccionado */
+.container input[type='checkbox']:checked + label {
+  background-color: #eee;
+  font-weight: bold;
+}
+
+/* Estilo para el checkbox cuando está deseleccionado */
+.container input[type='checkbox']:not(:checked) + label {
+  background-color: #fff;
+  font-weight: normal;
+}
+.button{
+  border-radius: 5px;
+  border: transparent;
+  font-size: 26px;
+  background-color: #eeef20;
+  font-family: "Acme";
+  color: #141414;
+  padding: 8px;
+  margin-left: 5px;
+}
+.button:hover{
+  background-color: #ffff3f;
+}

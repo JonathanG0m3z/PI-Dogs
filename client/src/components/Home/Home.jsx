@@ -8,12 +8,14 @@ import { addBreeds, filterBreeds, changeOrder,
 import Loading from '../Loading/Loading';
 import Paginator from '../Paginator/Paginator';
 import Nav from '../Nav/Nav';
+import Modal from '../Modal/Modal';
 
 export default function Home(props){
     const dispatch = useDispatch();
     const [breeds, setBreeds] = useState([]);
     const [page, setPage] = useState(1);
     const [pageChange, setPageChange] = useState(true);
+    const [modal, setModal] = React.useState(false);
 
     const allBreeds = useSelector((state)=>state.breeds);
     const filteredBreeds = useSelector((state)=>state.filteredBreeds);
@@ -34,7 +36,7 @@ export default function Home(props){
     const onSearch = (wanted)=>{
             axios.get(`http://localhost:3001/dogs?name=${wanted}`)
             .then((res)=>{
-                const data = res.data.map((breed)=>allBreeds.find((sameBreed)=>sameBreed.id==breed.id));
+                const data = res.data.map((breed)=>allBreeds.find((sameBreed)=>sameBreed.id===breed.id));
                 dispatch(filterBreeds(
                     data.filter((breed)=>breed!=undefined)
                 ));
@@ -59,6 +61,8 @@ export default function Home(props){
 
     };
 
+    const switchModal = ()=>setModal(!modal);
+
     useEffect(()=>{
         fetchBreeds();
         if(allBreeds.length&&pageChange&&!filtered){
@@ -76,6 +80,7 @@ export default function Home(props){
                 clearFilter={clearFilter}
                 changeOrderBreeds={changeOrderBreeds}
                 order={filtered?orderForFiltered:orderForAll}
+                switchModal={switchModal}
                 />
 
                 <Paginator setPage={setPage}
@@ -85,6 +90,7 @@ export default function Home(props){
                 dataLength={filtered?filteredBreeds.length:allBreeds.length}
                 />
                 {filtered?filteredBreeds.length?<Cards breeds={breeds} />: <Loading />:allBreeds.length?<Cards breeds={breeds} />: <Loading />}
+                <Modal show={modal} switchModal={switchModal}></Modal>
             </>
                     
                 )
