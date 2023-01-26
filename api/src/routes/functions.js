@@ -57,6 +57,7 @@ const getTemperaments= async ()=>{
         });
         let uniqueTemperaments = [... new Set(duplicateTemperaments)];//aquí se hace uso de Set que lo que hace a grandes rasgos
         //es devolver un array pero sin elementos duplicados
+        uniqueTemperaments.sort();
         uniqueTemperaments = uniqueTemperaments.map((temperament)=>{
             return {temperament};//ese array con los temperamentos sin duplicados lo tomamos 
             //y cada temperamento lo tranformamos en un objeto para posteriormente ingresarlo a base de datos
@@ -83,4 +84,42 @@ const postDogs = async (name, imperialHeight, metricHeight, imperialWeight, metr
     
 };
 
-module.exports = {getDogs,getBreedById,getTemperaments,postDogs}
+const filterData = async (filterByTemperament,filterByDataSource)=>{
+    try {
+        if(filterByDataSource===undefined||!filterByDataSource.length) return [];
+
+        const allDataDB = await Breed.findAll({include: {//aqui le decimos que incluya la relacion que existe entre temperamentos y las razas
+            model:Temperament,
+            through: {attributes: []}//en esta parte le decimos a la base de datos que dse la relación nos devulva
+            //solo los datos importantes. ID y name
+        }});
+
+        // const firtsFilter = filterByDataSource.length===2?allDataDB.concat(await axios.get('https://api.thedogapi.com/v1/breeds').data):
+        //     filterByDataSource[0]==='api'?
+        //     await axios.get('https://api.thedogapi.com/v1/breeds'):allDataDB;
+
+        if (filterByDataSource.length===2) {
+            const allApi=await axios.get('https://api.thedogapi.com/v1/breeds');
+            firtsFilter = allApi.data.concat(allDataDB);
+        }else{
+            const allApi=await axios.get('https://api.thedogapi.com/v1/breeds');
+            firtsFilter = filterByDataSource[0]==='api'?allApi.data:allDataDB;
+        }
+
+
+        if(filterByTemperament[0]==='All') return firtsFilter;
+
+        const result = firtsFilter.filter((breed)=>{
+            for (let i = 0; i < filterByTemperament.length; i++) {
+                if(breed.temperament?.includes(filterByTemperament[i])) return true;
+            }
+        });
+        return result;
+
+    } catch (error) {
+        throw Error(error.message);
+    }
+    
+};
+
+module.exports = {getDogs,getBreedById,getTemperaments,postDogs,filterData}

@@ -2,16 +2,17 @@ import styles from "./Modal.module.css";
 import axios from 'axios';
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addFilterByTemperament, deleteAll, filterByDataSource } from "../../redux/actions";
+import { addBreeds, addFilterByTemperament, changeOrder, deleteAll, filterByDataSource } from "../../redux/actions";
 import { useEffect } from "react";
 
 
-export default function Modal({show, switchModal}){
+export default function Modal({show, switchModal, setPageChange, setPage}){
 
   const [temperaments, setTemperaments] = useState([]);
   const [load, setLoad] = useState(false);
   const filters = useSelector(state=>state.filterByTemperament);
   const dataSource = useSelector(state=>state.filterByDataSource);
+  const order = useSelector(state=>state.orderAll);
 
   const dispatch = useDispatch();
 
@@ -35,9 +36,25 @@ export default function Modal({show, switchModal}){
       dispatch(filterByDataSource(event.target.id));
     };
 
-    const applyFilters = ()=>{
-      console.log("Filters: ", filters);
-      console.log("Data sources:", dataSource);
+    const applyFilters = async ()=>{
+      let url = 'http://localhost:3001/dogs/filters?';
+
+      url = filters.reduce(
+        (acumulator, currentValue, currentIndex) => acumulator + `tm[${currentIndex}]=${currentValue}&`,
+        url 
+      );
+      url = dataSource.reduce(
+        (acumulator, currentValue, currentIndex) => acumulator + `ds[${currentIndex}]=${currentValue}&`,
+        url 
+      );
+      // axios.get(url)
+      //       .then((res)=>dispatch(addBreeds(res.data)));
+      const data = await axios.get(url);
+      dispatch(addBreeds(data.data));
+      dispatch(changeOrder(false,order));
+      setPage(1);
+      setPageChange(true);
+      switchModal();
     };
 
     useEffect(()=>{},load)
@@ -57,8 +74,8 @@ export default function Modal({show, switchModal}){
               {temperaments.map(temperament=>{
                 return(
                   <>
-                    <option className={styles.selectOption} value={temperament.id}>{
-                      filters.some(element=>element==temperament.id)?'✅':''} {temperament.temperament}
+                    <option className={styles.selectOption} value={temperament.temperament}>{
+                      filters.some(element=>element==temperament.temperament)?'✅':''} {temperament.temperament}
                     </option>
                   </>
                 ) 
@@ -68,8 +85,6 @@ export default function Modal({show, switchModal}){
           </div>
           <div className={styles.container2}>
             <h2>Filter by data source</h2>
-            {/* <input type="checkbox" id='both' />
-            <label htmlFor="both">Both</label> */}
             <input defaultChecked={dataSource.some(data=>data==='api')} onChange={handleDataSource} type="checkbox" id='api' />
             <label htmlFor="api">External API</label>
             <input defaultChecked={dataSource.some(data=>data==='db')} onChange={handleDataSource} type="checkbox" id='db' />

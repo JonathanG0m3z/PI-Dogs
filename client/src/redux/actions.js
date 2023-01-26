@@ -32,8 +32,8 @@ export const setFiltered = (isFiltered, wanted="")=>{
     return {type: SET_FILTERED, payload: {isFiltered, wanted}};
 };
 
-export const addFilterByTemperament = (temperamentId)=>{
-    return {type: ADD_FILTER_BY_TEMPERAMENT, payload: temperamentId};
+export const addFilterByTemperament = (temperaments)=>{
+    return {type: ADD_FILTER_BY_TEMPERAMENT, payload: temperaments};
 };
 
 export const deleteAll = ()=>{

@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { getDogs, getBreedById, getTemperaments, postDogs } = require('./functions');
+const { getDogs, getBreedById, getTemperaments, postDogs, filterData } = require('./functions');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -16,6 +16,16 @@ router.get("/dogs", async (req,res)=>{
         res.status(200).json(dogs);
     } catch (error) {
         res.status(400).json({error: error.message});
+    }
+});
+
+router.get("/dogs/filters", async (req,res)=>{
+    const {tm, ds} = req.query;
+    try {
+        const dataFiltered = await filterData(tm,ds);
+        res.status(200).json(dataFiltered);
+    } catch (error) {
+        res.status(404).json({error: error.message});
     }
 });
 
@@ -47,5 +57,7 @@ router.post("/dogs", async (req,res)=>{
         res.status(404).json({error: error.message});
     }
 });
+
+
 
 module.exports = router;

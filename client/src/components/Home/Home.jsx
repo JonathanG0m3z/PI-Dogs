@@ -90,7 +90,12 @@ export default function Home(props){
                 dataLength={filtered?filteredBreeds.length:allBreeds.length}
                 />
                 {filtered?filteredBreeds.length?<Cards breeds={breeds} />: <Loading />:allBreeds.length?<Cards breeds={breeds} />: <Loading />}
-                <Modal show={modal} switchModal={switchModal}></Modal>
+                <Modal 
+                setPageChange={setPageChange} 
+                show={modal} 
+                switchModal={switchModal}
+                setPage={setPage}
+                />
             </>
                     
                 )
