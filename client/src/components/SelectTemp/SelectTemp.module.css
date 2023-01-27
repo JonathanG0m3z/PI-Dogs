@@ -1,0 +1,33 @@
+.divSelect input[type="text"] {
+    width: 200px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    margin-left: 32px;
+  }
+  
+  .divSelect select {
+    width: 200px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    height: 90px;
+  }
+  
+  .divSelect option {
+    padding: 12px;
+  }
+  .add{
+    font-size: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
