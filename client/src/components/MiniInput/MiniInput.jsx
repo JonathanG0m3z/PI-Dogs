@@ -1,7 +1,8 @@
+import { useEffect } from 'react';
 import { useState } from 'react';
 import styles from './MiniInput.module.css';
 
-export default function MiniInput({whatData, units, exchange}) {
+export default function MiniInput({whatData, units, exchange, handleMiniInput}) {
     const [metricMeasure, setMetricMeasure] = useState({1: "", 2: ""});
     const [imperialMeasure, setImperialMeasure] = useState({1: "", 2: ""});
 
@@ -19,6 +20,10 @@ export default function MiniInput({whatData, units, exchange}) {
             setMetricMeasure({...metricMeasure, [oneOrTwo]: (value/exchange).toFixed()});
         }
     };
+
+    useEffect(()=>{
+        handleMiniInput(whatData, metricMeasure, imperialMeasure);
+    },[metricMeasure, imperialMeasure])
     return(
         <>
             <label>{whatData}:</label>

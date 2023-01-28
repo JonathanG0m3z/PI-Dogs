@@ -5,7 +5,6 @@
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
-    margin-left: 32px;
   }
   
   .divSelect select {
@@ -30,4 +29,22 @@
     border-radius: 50%;
     cursor: pointer;
   }
-  
+  .add:disabled{
+    background-color: #77ac79;
+    cursor: default;
+  }
+  .delete{
+    font-size: 20px;
+    background-color: rgb(255, 38, 38);
+    color: white;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+  .delete:disabled{
+    background-color: rgb(253, 86, 86);
+    cursor: default;
+  }

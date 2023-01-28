@@ -15,7 +15,7 @@ const getDogs = async (name)=>{
             //solo los datos importantes. ID y name
         }});
         const dogs = dogsApi.data.concat(dogsDB);
-        return dogs;  
+        return dogs.sort((a, b)=> a.name > b.name?1:-1);  
         //los return se hacen con .data porque axios devuelve un super objeto y la información
         //que nos interesa se encuentra en data
     }else{//si el nombre no existe
@@ -25,7 +25,7 @@ const getDogs = async (name)=>{
             model:Temperament,
             through: {attributes: []}
         }});
-        const dogs = dogsApi.data.concat(dogsDB);
+        const dogs = dogsApi.data.concat(dogsDB).sort((a, b)=> a.name.toLowerCase() > b.name.toLowerCase()?1:-1);
         return dogs;   
     }
 };

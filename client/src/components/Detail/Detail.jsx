@@ -21,7 +21,7 @@ export default function Detail(props) {
             <h1 className={styles.tittle}>{information?.name}</h1>
         <div className={styles.container}>
             <div className={styles.divImg}>
-                <img className={styles.img} src={information?.image.url} alt="" />
+                <img className={styles.img} src={information?.image?.url} alt="" />
             </div>
             <div className={styles.divData}>
                 <p><b>Weight:</b> {information?.weight.metric} <i>kg</i> or {information?.weight.imperial} <i>lb</i></p>

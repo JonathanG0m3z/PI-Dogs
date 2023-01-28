@@ -33,24 +33,7 @@
 .container{
     display: flex;
 }
-.miniInput{
-    width: 15px;
-    padding: 10px;
-    border: 1px solid #ccc;
-}
-.divmini{
-    display: flex;
-    padding-left: 14px;
-}
-.miniLabel{
-    margin: 10px;
-    margin-bottom: 0%;
-}
-.divForm input[type="number"]::-webkit-inner-spin-button, 
-.divForm input[type="number"]::-webkit-outer-spin-button { 
-    -webkit-appearance: none;
-    margin: 0; 
-}
+
 .divLife{
     display: flex;
     justify-content: space-between;
@@ -63,26 +46,12 @@
 .divLife label{
     margin-top: 8px;
 }
-
-.divSelect input[type="text"] {
-    width: 200px;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .divSelect select {
-    width: 200px;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .divSelect option {
-    padding: 12px;
-  }
-  
+.divForm input[type="number"]::-webkit-inner-spin-button, 
+.divForm input[type="number"]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    margin: 0; 
+}
+.divForm input:disabled{
+    background-color: #77ac79;
+    cursor: default;
+}

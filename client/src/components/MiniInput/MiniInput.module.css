@@ -11,8 +11,3 @@
     margin: 10px;
     margin-bottom: 0%;
 }
-.divForm input[type="number"]::-webkit-inner-spin-button, 
-.divForm input[type="number"]::-webkit-outer-spin-button { 
-    -webkit-appearance: none;
-    margin: 0; 
-}
