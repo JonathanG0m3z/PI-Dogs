@@ -67,7 +67,6 @@ export default function Create(props) {
     return(
         <>
         <Nav />
-            <h1>Create breed form</h1>
             <div className={styles.container}>
                 <div className={styles.divForm}>
                     <form action="">

@@ -9,13 +9,14 @@
   
   .modalMain {
     position:fixed;
-    background: rgba(251, 247, 239, 0.65);
+    background: rgba(73, 80, 87, 0.8);
     width: 40%;
     height: 50%;
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
     border-radius: 10px;
+    color: #e9ecef;
   }
   
   .displayBlock {
@@ -58,11 +59,17 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
+  color: #e9ecef;
+  background: rgb(73, 80, 87);
+  font-family: "Acme";
 }
 
 /* Estilo para las opciones del select */
 .selectOption {
   padding: 10px;
+  color: #e9ecef;
+  background: rgb(73, 80, 87);
+  font-family: "Acme";
 }
 
 /* Oculta el checkbox */
@@ -74,6 +81,7 @@
 .container label {
   cursor: pointer;
   padding: 10px;
+  color: black;
 }
 
 /* Estilo para el checkbox cuando está seleccionado */
@@ -91,12 +99,13 @@
   border-radius: 5px;
   border: transparent;
   font-size: 26px;
-  background-color: #eeef20;
+  background-color: #e63946;
   font-family: "Acme";
   color: #141414;
   padding: 8px;
   margin-left: 5px;
+  cursor: pointer;
 }
 .button:hover{
-  background-color: #ffff3f;
+  background-color: #e22838;
 }

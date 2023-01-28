@@ -1,8 +1,12 @@
 .divForm form {
-    width: 320px;
+    width: 350px;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    background-color: #495057;
+    border-radius: 3px;
+    color: white;
+    font-size: 20px;
+    margin-top: 10px;
 }
 
 .divForm label {
@@ -33,6 +37,14 @@
 .container{
     display: flex;
 }
+.divForm input{
+    background-color: #343a40;
+    border: none;
+    border-radius: 3px;
+    color: #e9ecef;
+    font-family: "Acme";
+    font-size: 18px;
+}
 
 .divLife{
     display: flex;
@@ -54,4 +66,7 @@
 .divForm input:disabled{
     background-color: #77ac79;
     cursor: default;
+}
+h1{
+    color: #e9ecef;
 }

@@ -31,10 +31,10 @@ const rootReducer = (state=initialState,action)=>{
             const {filtered, type} = action.payload;
             const actualState = filtered?'filteredBreeds':'breeds';
             state[actualState].sort((a, b)=> {
-                if (a.name > b.name) {
+                if (a.name.toLowerCase() > b.name.toLowerCase()) {
                   return type==='ASC'?1:-1;
                 }
-                if (a.name < b.name) {
+                if (a.name.toLowerCase() < b.name.toLowerCase()) {
                   return type==='ASC'?-1:1;
                 }
                 return 0;

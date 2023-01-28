@@ -3,7 +3,6 @@
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
-    border: 2px solid #ccc;
     border-radius: 4px;
   }
   
@@ -12,9 +11,12 @@
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
-    border: 2px solid #ccc;
     border-radius: 4px;
     height: 90px;
+    background-color: #343a40;
+    color: #e9ecef;
+    font-family: "Acme";
+    font-size: 18px;
   }
   
   .divSelect option {

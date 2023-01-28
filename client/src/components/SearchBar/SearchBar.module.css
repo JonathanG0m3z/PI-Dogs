@@ -1,34 +1,34 @@
 .inputSearch{
-    background-color: #f3fe88;
+    background-color: #343a40;
     border-radius: 7px;
-    border: 1px solid black;
+    border: none;
     padding: 10px 20px;
-    color: black;
+    color: #e9ecef;
     font-size: 24px;
     font-family: "Acme";
 }
 .inputSearch:focus{
-    box-shadow: 0 0 5px #fbf7ef;
+    border: 1px solid gray;
 }
 .buttonSearch{
     border-radius: 5px;
     border: transparent;
     font-size: 26px;
-    background-color: #eeef20;
+    background-color: #e63946;
     font-family: "Acme";
     color: #141414;
     padding: 8px;
     margin-left: 5px;
 }
 .buttonSearch:hover{
-    background-color: #ffff3f;
+    background-color: #e22838;
 }
 .inputSearchFailed{
-    background-color: #f3fe88;
+    background-color: #343a40;
     border-radius: 7px;
-    border: 1px solid red;
+    border: 2px solid red;
     padding: 10px 20px;
-    color: black;
+    color: #e9ecef;
     font-size: 24px;
     font-family: "Acme";
 }
@@ -36,8 +36,8 @@
     box-shadow: 0 0 8px red;
 }
 .p{
-    color: red;
-    font-size: 20px;
+    color: #e0fbfc;
+    font-size: 25px;
     margin-top: 2%;
     margin-bottom: 0%;
 }

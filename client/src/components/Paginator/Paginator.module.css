@@ -26,12 +26,12 @@
   flex-wrap: wrap;
 }
 .pagination li {
-  background: #f23b26;
+  background: #e63946;
   list-style: none;
 }
 .pagination li a {
   text-decoration: none;
-  color: #fdfdfd;
+  color: black;
   height: 50px;
   width: 50px;
   font-size: 18px;
@@ -39,6 +39,7 @@
   border: 1px solid rgba(0, 0, 0, 0.25);
   border-right-width: 0px;
   box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.35);
+  
 }
 .pagination li:last-child a {
   border-right-width: 1px;

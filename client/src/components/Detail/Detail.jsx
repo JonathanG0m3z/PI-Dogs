@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import Nav from "../Nav/Nav";
 import styles from './Detail.module.css';
 import Loading from '../Loading/Loading';
+import defualtImg from '../../images/defaultDog.jpg';
 
 export default function Detail(props) {
     const [information, setInformation] = useState();
@@ -21,7 +22,7 @@ export default function Detail(props) {
             <h1 className={styles.tittle}>{information?.name}</h1>
         <div className={styles.container}>
             <div className={styles.divImg}>
-                <img className={styles.img} src={information?.image?.url} alt="" />
+                <img className={styles.img} src={information?.image?.url || defualtImg} alt="" />
             </div>
             <div className={styles.divData}>
                 <p><b>Weight:</b> {information?.weight.metric} <i>kg</i> or {information?.weight.imperial} <i>lb</i></p>

@@ -35,7 +35,7 @@ class Link extends React.Component {
     const selected = this.props.order;
   	return (
     	<div className={styles.link}>
-    	  <span onClick={this.handleClick}>Order</span>
+    	  <span className={styles.span} onClick={this.handleClick}>Order</span>
         <div className={open ? styles.menu.open : styles.menu}>
           <ul>
             <li><b>Alphabetical order</b></li>
