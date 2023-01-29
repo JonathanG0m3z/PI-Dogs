@@ -6,6 +6,7 @@ import Nav from "../Nav/Nav";
 import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
+import Alert from "../Alert/Alert";
 
 export default function Create(props) {
     const [form, setForm] = useState({
@@ -20,6 +21,7 @@ export default function Create(props) {
     });
 
     const [sendible, setSendible] = useState(false);
+    const [showAlert, setShowAlert] = useState(false); 
 
     const handleChanges = (event)=>{
         const {id, value} = event.target;
@@ -43,15 +45,33 @@ export default function Create(props) {
 
     const sendForm = (event)=>{
         event.preventDefault();
-        if(sendible){
+        try {
+            if(sendible){
             const post = axios({method: 'POST', 
             url: `http://localhost:3001/dogs`, 
             headers: { "Content-Type": "application/json; charset=UTF-8" }, 
             data: {...form, 
                 life_span: `${form.life_span} years`}});
-            window.location.reload();
+            setShowAlert(true);
         }
+        } catch (error) {
+            console.log(error.message);
+        }
+        
     };
+    const closeAlert = ()=>{
+        setShowAlert(false);
+        setForm({
+            name: "",
+            imperialHeight: "",
+            metricHeight: "",
+            imperialWeight: "",
+            metricWeight: "",
+            life_span: "",
+            temperamentString: "",
+            temperament: [],
+        });
+    }
 
     useEffect(()=>{
         if(form.name!=="" &&
@@ -62,7 +82,7 @@ export default function Create(props) {
             form.life_span!=="" &&
             form.temperamentString!==""
         ) setSendible(true);
-    })
+    },[form])
 
     return(
         <>
@@ -98,7 +118,8 @@ export default function Create(props) {
                 />
                 </div>
             </div>
-            
+            <Alert success={true} message={"¡New breed created successfully!"} 
+                show={showAlert} closeAlert={closeAlert} />
         </>
         
     )

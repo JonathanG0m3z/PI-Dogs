@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import Select from "../Select/Select";
 import styles from './Nav.module.css';
-import logOut from '../../icons/logOut.svg';
+import logOut from '../../icons/logOut2.svg';
 
 export default function Nav({onSearch, clearFilter, changeOrderBreeds, order, switchModal}) {
     const search = useSelector(state=>state.filtered.isFiltered);

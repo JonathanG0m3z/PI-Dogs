@@ -45,10 +45,10 @@ const rootReducer = (state=initialState,action)=>{
             const {filteredW, typeW} = action.payload;
             const actualStateW = filteredW?'filteredBreeds':'breeds';
                 state[actualStateW].sort((a, b)=> {
-                    if (Number(a.weight.metric.substring(0,2)) > Number(b.weight.metric.substring(0,2))) {
+                    if (Number(a.weight.imperial.substring(0,2)) > Number(b.weight.imperial.substring(0,2))) {
                       return typeW==='upWeight'?1:-1;
                     }
-                    if (Number(a.weight.metric.substring(0,2)) < Number(b.weight.metric.substring(0,2))) {
+                    if (Number(a.weight.imperial.substring(0,2)) < Number(b.weight.imperial.substring(0,2))) {
                       return typeW==='upWeight'?-1:1;
                     }
                     return 0;

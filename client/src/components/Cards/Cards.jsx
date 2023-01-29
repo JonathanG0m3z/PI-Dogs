@@ -8,6 +8,7 @@ flex-wrap: wrap;
 justify-content: space-between;
 gap: 10px;
 width: 98%;
+margin: 15px;
 `
 
 

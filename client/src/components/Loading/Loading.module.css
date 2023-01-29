@@ -1,5 +1,7 @@
 .loadingGif{
     width: 40%;
+    -webkit-filter: invert(80%);
+    filter: invert(80%);
 }
 .error{
     border-radius: 15px;
