@@ -111,8 +111,9 @@ const filterData = async (filterByTemperament,filterByDataSource)=>{
 
         const result = firtsFilter.filter((breed)=>{
             for (let i = 0; i < filterByTemperament.length; i++) {
-                if(breed.temperament?.includes(filterByTemperament[i])) return true;
+                if(!breed.temperament?.includes(filterByTemperament[i])) return false;
             }
+            return true;
         });
         return result;
 

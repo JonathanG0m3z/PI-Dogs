@@ -3,7 +3,9 @@
     border-bottom: 1px solid gray;
     background: #e63946;
     padding-right:  5px; 
-    border-radius: 10px;
+    border-radius: 5px;
+    color: #e9ecef;
+
   }
   
   .link {
@@ -15,20 +17,8 @@
     cursor: pointer;
     width: 120px;
   }
-  .span{
-    color: white;
-  }
-  
   .menu {
-    opacity: 0;
-    position: absolute;
-    top: 40px; 
-    left: 0;
-    background: #ededed;
-    border: 1px solid gray;
-    padding: 10px;
-    text-align: center;
-    transition: all 1000ms ease;
+    display: none;
   }
   
   .menu.open {
@@ -39,4 +29,5 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    text-shadow: 0 0 5px black;
   }

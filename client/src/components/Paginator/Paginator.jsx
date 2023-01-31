@@ -10,11 +10,9 @@ export default function Paginator({setPage, setPageChange, cardsPerPage,page,dat
 
     const createButtons = (num)=>{
       const result=[];
-      for (let i = 1; i <= num; i++) {
-        // i<=9 &&
-        result.push(<li><a onClick={onClick} id={i} >{i}</a></li>);
-        // if(i===9)result.push(<li><a >...</a></li>)&&result.push(<li><a onClick={onClick} id={num} >{num}</a></li>);
-      }
+        if(page!==1) result.push(<li><a onClick={onClick} id={page-1} >{page-1}</a></li>);
+        result.push(<div className={styles.current}><li><a onClick={onClick} id={page} >{page}</a></li></div>);
+        if(page!==numPages) result.push(<li><a onClick={onClick} id={page+1} >{page+1}</a></li>);
       return result;
     };
 
@@ -22,13 +20,19 @@ export default function Paginator({setPage, setPageChange, cardsPerPage,page,dat
       <>
         <div class={styles.container}>
         <ul class={styles.pagination}>
-          {page!=1?<li class={styles.icon}>
+          {numPages===0?<li><a><span></span>0</a></li>:<>{page!=1?<li class={styles.icon}>
             <a onClick={onClick} id={page-1}><span class="fas fa-angle-left"></span>Previous</a>
           </li>:""}
+          {page>2?<><li><a onClick={onClick} id={1}><span></span>1</a></li>
+          <li><a><span></span>...</a></li></>:''}
           {createButtons(numPages)}
+          {page<21?<><li><a><span></span>...</a></li>
+          <li><a onClick={onClick} id={numPages}><span></span>{numPages}</a></li>
+          </>:''}
           {page!=numPages?<li class={styles.icon}>
             <a onClick={onClick} id={page+1}>Next<span class="fas fa-angle-right"></span></a>
-          </li>:""}
+          </li>:""}</>}
+          
         </ul>
       </div> 
       </>

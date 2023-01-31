@@ -19,13 +19,14 @@
     color: #141414;
     padding: 8px;
     margin-left: 5px;
+    color: #e9ecef;
 }
 .buttonSearch:hover{
     background-color: #e22838;
 }
 .inputSearchFailed{
     background-color: #343a40;
-    border-radius: 7px;
+    border-radius: 5px;
     border: 2px solid red;
     padding: 10px 20px;
     color: #e9ecef;
@@ -37,7 +38,7 @@
 }
 .p{
     color: #e0fbfc;
-    font-size: 25px;
+    font-size: 19px;
     margin-top: 2%;
     margin-bottom: 0%;
 }

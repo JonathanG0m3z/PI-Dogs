@@ -29,7 +29,7 @@ export default function Detail(props) {
                 <p><b>Height:</b> {information?.height.metric} <i>cm</i> or {information?.height.imperial} <i>inch</i></p>
                 <p><b>Life span:</b> {information?.life_span}</p>
                 <p><b>Origin:</b> {information?.origin!==undefined?information.origin:"unknown"}</p>
-                <p><b>Bred for:</b> {information?.bred_for}</p>
+                <p><b>Bred for:</b> {information?.bred_for!==undefined?information?.bred_for:"unknown"}</p>
                 <p><b>Temperament:</b> {information?.temperament}</p>
             </div>
         </div>

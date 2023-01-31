@@ -22,10 +22,12 @@ export default function Create(props) {
 
     const [sendible, setSendible] = useState(false);
     const [showAlert, setShowAlert] = useState(false); 
+    const [regex, setRegex] = useState(true);
 
     const handleChanges = (event)=>{
         const {id, value} = event.target;
-        setForm({...form, [id]: value})
+        setForm({...form, [id]: value});
+        if(id==='name') setRegex(validateRegex(value));
     };
 
     const handleMiniInput = (whatData, metricMeasure, imperialMeasure) =>{
@@ -73,6 +75,10 @@ export default function Create(props) {
         });
     }
 
+    function validateRegex(string) {
+        return /^[A-Z][A-Za-z\u00C0-\u017F]+$/.test(string);
+      }
+
     useEffect(()=>{
         if(form.name!=="" &&
             form.imperialHeight!==" - " &&
@@ -80,10 +86,11 @@ export default function Create(props) {
             form.imperialWeight!==" - " &&
             form.metricWeight!==" - " &&
             form.life_span!=="" &&
-            form.temperamentString!==""
+            form.temperamentString!=="" &&
+            regex
         ) setSendible(true);
     },[form])
-
+      
     return(
         <>
         <Nav />
@@ -92,6 +99,7 @@ export default function Create(props) {
                     <form action="">
                         <label for="name">Breed name:</label>
                         <input onChange={handleChanges} value={form['name']} className={styles.input} autoComplete='off' type="text" id="name" />
+                        {!regex?<p className={styles.errorSpan}>The breed name must to begin with a capital letter and not contain numbers</p>:''}
                         <br />
                         <MiniInput whatData="Weight" units={['kg','lb']} 
                             exchange={2.20462} handleMiniInput={handleMiniInput}/>

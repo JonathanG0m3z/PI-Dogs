@@ -9,7 +9,7 @@ class Loading extends React.Component {
     }
     render (){
         const {error} = this.state;
-        setTimeout(()=>this.setState({ error: true}),4000);
+        setTimeout(()=>this.setState({ error: true}),6000);
         return(
             <>
                 {error?<img className={styles.error} src={errorImage} alt="" />:<img className={styles.loadingGif} src={gif} alt="" />} 

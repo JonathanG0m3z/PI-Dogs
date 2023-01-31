@@ -5,6 +5,8 @@
     justify-content: space-between;
     background-color: #495057;
     padding-block: 15px;
+    padding-bottom: 0px;
+    padding-top: 0px;
 }
 
 .nav span{
@@ -68,6 +70,7 @@
     padding: 8px;
     margin-left: 5px;
     cursor: pointer;
+    color: #e9ecef;
 }
 .buttonModal:hover{
     background-color: #e22838;
@@ -78,7 +81,15 @@
 }
 .labelCreate{
     margin: 50px;
+    margin-top: 100px;
 }
 .logOut{
     height: 35px;
+}
+.logo{
+    width: 80px;
+    margin: 0px;
+}
+.divLabel{
+    margin-top: 5px;
 }

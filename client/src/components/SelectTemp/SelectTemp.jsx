@@ -16,7 +16,7 @@ export default function SelectTemp(props) {
     }
     
     const handleSelect = (event)=>{
-        const {value, id} = event.target;
+        const {value} = event.target;
         setSearch(value);
         setAddable(true);
     };

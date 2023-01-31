@@ -70,3 +70,9 @@
 h1{
     color: #e9ecef;
 }
+.errorSpan{
+    color: rgb(250, 49, 49);
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0px;
+}

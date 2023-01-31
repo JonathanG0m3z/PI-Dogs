@@ -36,15 +36,19 @@ class Link extends React.Component {
     const selected = this.props.order;
   	return (
     	<div className={styles.link}>
-    	  <span className={styles.span} onClick={this.handleClick}>Order</span>
+    	  <span className={styles.span} style={{color: "#e9ecef"}} onClick={this.handleClick}>Order</span>
         <div className={open ? styles.menu.open : styles.menu}>
           <ul>
             <li><b>Alphabetical order</b></li>
             <li onClick={this.onSelect} id='ASC'>{selected==='ASC'?<img src={checked} alt="" />:''}Upward</li>
             <li onClick={this.onSelect} id='DES'>{selected==='DES'?<img src={checked} alt="" />:''}Falling</li>
+            {/* <li onClick={this.onSelect} id='ASC'>{selected==='ASC'?'✅':''}Upward</li>
+            <li onClick={this.onSelect} id='DES'>{selected==='DES'?'✅':''}Falling</li> */}
             <li><b>Order by weight</b></li>
             <li onClick={this.onSelect} id='upWeight'>{selected==='upWeight'?<img src={checked} alt="" />:''}Upward</li>
             <li onClick={this.onSelect} id='downWeight'>{selected==='downWeight'?<img src={checked} alt="" />:''}Falling</li>
+            {/* <li onClick={this.onSelect} id='upWeight'>{selected==='upWeight'?'✅':''}Upward</li>
+            <li onClick={this.onSelect} id='downWeight'>{selected==='downWeight'?'✅':''}Falling</li> */}
           </ul>
         </div>
     	</div>
