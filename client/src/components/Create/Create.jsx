@@ -9,7 +9,7 @@ import axios from 'axios';
 import Alert from "../Alert/Alert";
 
 export default function Create(props) {
-    const [form, setForm] = useState({
+    const initialData ={
         name: "",
         imperialHeight: "",
         metricHeight: "",
@@ -18,7 +18,9 @@ export default function Create(props) {
         life_span: "",
         temperamentString: "",
         temperament: [],
-    });
+        img: undefined
+    };
+    const [form, setForm] = useState(initialData);
 
     const [sendible, setSendible] = useState(false);
     const [showAlert, setShowAlert] = useState(false); 
@@ -53,7 +55,8 @@ export default function Create(props) {
             url: `http://localhost:3001/dogs`, 
             headers: { "Content-Type": "application/json; charset=UTF-8" }, 
             data: {...form, 
-                life_span: `${form.life_span} years`}});
+                life_span: `${form.life_span} years`,
+            }});
             setShowAlert(true);
         }
         } catch (error) {
@@ -63,16 +66,7 @@ export default function Create(props) {
     };
     const closeAlert = ()=>{
         setShowAlert(false);
-        setForm({
-            name: "",
-            imperialHeight: "",
-            metricHeight: "",
-            imperialWeight: "",
-            metricWeight: "",
-            life_span: "",
-            temperamentString: "",
-            temperament: [],
-        });
+        setForm(initialData);
     }
 
     function validateRegex(string) {
@@ -101,6 +95,8 @@ export default function Create(props) {
                         <input onChange={handleChanges} value={form['name']} className={styles.input} autoComplete='off' type="text" id="name" />
                         {!regex?<p className={styles.errorSpan}>The breed name must to begin with a capital letter and not contain numbers</p>:''}
                         <br />
+                        <label htmlFor="">Image Url:</label>
+                        <input onChange={handleChanges} value={form.img} className={styles.input} autoComplete='off' type="text" id="img" />
                         <MiniInput whatData="Weight" units={['kg','lb']} 
                             exchange={2.20462} handleMiniInput={handleMiniInput}/>
                         <br />
@@ -119,7 +115,7 @@ export default function Create(props) {
                 </div>
                 <div className={styles.divCard}>
                 <Card race={form?.name} 
-                    img={""} 
+                    img={form.img} 
                     metricWeight={form?.metricWeight}
                     imperialWeight={form?.imperialWeight}
                     temperaments={form?.temperamentString}

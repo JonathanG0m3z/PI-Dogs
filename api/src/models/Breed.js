@@ -33,6 +33,9 @@ module.exports = (sequelize) => {
     life_span: {
       type: DataTypes.STRING,
     },
+    img: {
+      type: DataTypes.STRING,
+    },
     height: {
       type: DataTypes.VIRTUAL,
       get(){
@@ -57,6 +60,13 @@ module.exports = (sequelize) => {
           else result = result+", "+array[i].temperament;
         }
         return result;
+      }
+    },
+    image: {
+      type: DataTypes.VIRTUAL,
+      get(){
+        const url = this.getDataValue("img");
+        return {url}
       }
     }
   },{

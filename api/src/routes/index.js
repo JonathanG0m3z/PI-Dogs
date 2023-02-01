@@ -49,9 +49,9 @@ router.get("/temperaments", async (req,res)=>{
 });
 
 router.post("/dogs", async (req,res)=>{
-    const {name, imperialHeight, metricHeight, imperialWeight, metricWeight, life_span, temperament} = req.body;
+    const {name, imperialHeight, metricHeight, imperialWeight, metricWeight, life_span, temperament, img} = req.body;
     try {
-        const newBreed = await postDogs(name, imperialHeight, metricHeight, imperialWeight, metricWeight, life_span, temperament);
+        const newBreed = await postDogs(name, imperialHeight, metricHeight, imperialWeight, metricWeight, life_span, temperament, img);
         res.status(200).json(newBreed);
     } catch (error) {
         res.status(404).json({error: error.message});

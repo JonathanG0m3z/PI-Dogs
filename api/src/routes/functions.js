@@ -72,9 +72,9 @@ const getTemperaments= async ()=>{
     return temperaments;
 };
 
-const postDogs = async (name, imperialHeight, metricHeight, imperialWeight, metricWeight, life_span, temperament)=>{
+const postDogs = async (name, imperialHeight, metricHeight, imperialWeight, metricWeight, life_span, temperament, img)=>{
     try {
-        const newBreed = await Breed.create({name, imperialHeight, metricHeight, imperialWeight, metricWeight, life_span});
+        const newBreed = await Breed.create({name, imperialHeight, metricHeight, imperialWeight, metricWeight, life_span, img});
         //recibimos toda esa data y la ingreamos a base de datos a excepcion del temperamento
         newBreed.addTemperament(temperament);//el temperamento es una relación asi que hacemos uso del metodo regalado por sqlize
         return newBreed; 
