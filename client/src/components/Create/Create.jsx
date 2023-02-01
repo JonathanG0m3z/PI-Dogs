@@ -83,6 +83,7 @@ export default function Create(props) {
             form.temperamentString!=="" &&
             regex
         ) setSendible(true);
+        else setSendible(false);
     },[form])
       
     return(
@@ -91,11 +92,11 @@ export default function Create(props) {
             <div className={styles.container}>
                 <div className={styles.divForm}>
                     <form action="">
-                        <label for="name">Breed name:</label>
+                        <label for="name">Breed name*</label>
                         <input onChange={handleChanges} value={form['name']} className={styles.input} autoComplete='off' type="text" id="name" />
                         {!regex?<p className={styles.errorSpan}>The breed name must to begin with a capital letter and not contain numbers</p>:''}
                         <br />
-                        <label htmlFor="">Image Url:</label>
+                        <label htmlFor="">Image Url</label>
                         <input onChange={handleChanges} value={form.img} className={styles.input} autoComplete='off' type="text" id="img" />
                         <MiniInput whatData="Weight" units={['kg','lb']} 
                             exchange={2.20462} handleMiniInput={handleMiniInput}/>
@@ -103,11 +104,12 @@ export default function Create(props) {
                         <MiniInput whatData="Height" units={['cm','inch']} 
                             exchange={0.393701} handleMiniInput={handleMiniInput}/>
                         <br />
-                        <label for="number">Life span:</label>
+                        <label for="number">Life span*</label>
                         <div className={styles.divLife}>
                             <input onChange={handleChanges} value={form['life_span']} autoComplete='off' className={styles.input} type="number" id="life_span" />
                             <label htmlFor="">years</label>  
                         </div>
+                        <label htmlFor="">Temperaments*</label>
                         <SelectTemp addTemperament={addTemperament} deleteTemps={deleteTemps} />
                         <br />
                         <input onClick={sendForm} disabled={!sendible} className={styles.input} type="submit" value="Create breed" />

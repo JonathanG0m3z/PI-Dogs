@@ -22,11 +22,13 @@ export default function Home(props){
     const orderForAll = useSelector(state=>state.orderAll);
     const orderForFiltered = useSelector(state=>state.orderFiltered);
     const filtered = useSelector(state=>state.filtered.isFiltered);
+    const filterByDataSource = useSelector(state=>state.filterByDataSource);
+    const filterByTemperament = useSelector(state=>state.filterByTemperament);
 
     const cardsPerPage = 8;
 
     const fetchBreeds = ()=>{
-        if(!allBreeds.length){
+        if(!allBreeds.length&&filterByDataSource.length&&filterByTemperament[0]==='All'){
             axios.get('http://localhost:3001/dogs')
             .then((res)=>dispatch(addBreeds(res.data))); 
         }

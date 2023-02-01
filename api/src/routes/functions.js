@@ -94,10 +94,6 @@ const filterData = async (filterByTemperament,filterByDataSource)=>{
             //solo los datos importantes. ID y name
         }});
 
-        // const firtsFilter = filterByDataSource.length===2?allDataDB.concat(await axios.get('https://api.thedogapi.com/v1/breeds').data):
-        //     filterByDataSource[0]==='api'?
-        //     await axios.get('https://api.thedogapi.com/v1/breeds'):allDataDB;
-
         if (filterByDataSource.length===2) {
             const allApi=await axios.get('https://api.thedogapi.com/v1/breeds');
             firtsFilter = allApi.data.concat(allDataDB);

@@ -26,7 +26,7 @@ export default function MiniInput({whatData, units, exchange, handleMiniInput}) 
     },[metricMeasure, imperialMeasure])
     return(
         <>
-            <label>{whatData}:</label>
+            <label>{whatData}*</label>
                 <div className={styles.divmini}>
                     <input value={metricMeasure[1]}  onChange={handleChange} className={styles.miniInput} type="number" id={`metric1`} />
                     <label className={styles.miniLabel}>-</label>
